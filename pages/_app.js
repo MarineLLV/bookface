@@ -1,5 +1,5 @@
 //import App from 'next/app' // Custom App
-import '../styles/globals.css'
+import '../styles/globals.css';
 
 /* class MyApp extends App {
   render() {
@@ -16,4 +16,4 @@ function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />
 }
 
-// export default MyApp;
+export default MyApp;

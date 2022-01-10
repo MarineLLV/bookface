@@ -1,16 +1,21 @@
 import { Fragment } from 'react';
+import Header from '../components/Layout/header';
+import Sidebar from '../components/sidebar';
+import Feed from '../components/feed';
+import Widget from '../components/widget';
+
 
 function HomePage() {
   return (
     <div className="App">
-      <h1>Hello world!</h1>
+      <Header />
       <Fragment>
-        {/* <Sidebar />
+        <Sidebar />
         <Feed />
-        <Widgets /> */}
+        <Widget />
       </Fragment>
     </div>
-  )
+  );
 }
 
 export default HomePage;

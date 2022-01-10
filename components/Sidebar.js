@@ -1,43 +1,39 @@
-import React from 'react'
+import SidebarRow from './sidebarRow';
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+import EmojiFlagsIcon from '@mui/icons-material/EmojiFlags';
+import PeopleIcon from '@mui/icons-material/People';
+import ChatIcon from '@mui/icons-material/Chat';
+import StorefrontIcon from '@mui/icons-material/Storefront';
+import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
+//import ExpandMoreOutlined from '@material-ui/icons/ExpandMoreOutlined';
+//import fox from '../../public/images/fox.jpg';
 
-import SidebarRow from './SidebarRow'
+import classes from './sidebar.module.css'
 
-import LocalHospitalIcon from '@material-ui/icons/LocalHospital'
-import EmojiFlagsIcon from '@material-ui/icons/EmojiFlags'
-import PeopleIcon from '@material-ui/icons/People'
-import ChatIcon from '@material-ui/icons/Chat'
-import StorefrontIcon from '@material-ui/icons/Storefront'
-import VideoLibraryIcon from '@material-ui/icons/VideoLibrary'
-import ExpandMoreOutlined from '@material-ui/icons/ExpandMoreOutlined'
-import fox from '../../public/fox.jpg'
+function Sidebar() {
 
-import './Sidebar.module.css'
+    return (
+        <div className={classes.sidebar}>
 
-const Sidebar = () => {
+            {/* <SidebarRow src={fox} title="Morgane" /> */}
 
-return(
-    <div className='sidebar' >
-        
-        <SidebarRow src={fox} title= "Morgane" />
+            <SidebarRow Icon={LocalHospitalIcon} title='COVID-19 Information Center' />
 
-        <SidebarRow Icon={LocalHospitalIcon} title='COVID-19 Information Center' />
+            <SidebarRow Icon={EmojiFlagsIcon} title='Pages' />
 
-        <SidebarRow Icon={EmojiFlagsIcon} title='Pages' />
+            <SidebarRow Icon={PeopleIcon} title='Friends' />
 
-        <SidebarRow Icon={PeopleIcon} title='Friends' />
+            <SidebarRow Icon={ChatIcon} title='Messenger' />
 
-        <SidebarRow Icon={ChatIcon} title='Messenger' />
+            <SidebarRow Icon={StorefrontIcon} title='Marketplace' />
 
-        <SidebarRow Icon={StorefrontIcon} title='Marketplace' />
+            <SidebarRow Icon={VideoLibraryIcon} title='Videos' />
 
-        <SidebarRow Icon={VideoLibraryIcon} title='Videos' />
+            {/* <SidebarRow Icon={ExpandMoreOutlined} title='More' /> */}
 
-        <SidebarRow Icon={ExpandMoreOutlined} title='More' />
-
-      </div>
-    
-   )
+        </div>
+    );
 }
 
-export default Sidebar
+export default Sidebar;
 

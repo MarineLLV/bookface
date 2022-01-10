@@ -1,70 +1,62 @@
+import { Avatar, Input } from '@mui/material';
+import { useState } from 'react';
+import VideocamIcon from '@mui/icons-material/Videocam';
+import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
+import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 
-import laptop from '../../public/laptop.jpg'
-import { Avatar, Input } from '@material-ui/core'
-import React, { useState } from 'react' 
-import './MessageSender.module.css'
+import classes from './messageSender.module.css';
 
-import VideocamIcon from '@material-ui/icons/Videocam'
-import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary'
-import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon'
+function MessageSender() {
+    const [input, setInput] = useState('');
+    const [image, setImage] = useState(null);
 
-const MessageSender =() => {
-    const [input, setInput] = useState('')
-    const [image, setImage] = useState(null)
-
-const handleChange = (e) => {
-    if (e.target.files[0]) {
-        setImage(e.target.files[0])
+    const handleChange = (e) => {
+        if (e.target.files[0]) {
+            setImage(e.target.files[0])
+        }
     }
-}
 
-const handleSubmit =() => {
-    console.log('Submitting')
-}
+    const handleSubmit = () => {
+        console.log('Submitting');
+    }
 
-return (
-        <div className='messageSender' >
-            <div className="messageSender__top">
-                <Avatar src={laptop} 
-                />
+    return (
+        <div className={classes.messageSender} >
+            <div className={classes.messageSender__top}>
+                {/* <img src={laptop} alt={laptop} /> */}
 
                 <form>
-                <input type="text" 
-                        className='messageSender__input' 
-                        placeholder="What's on your mind ?" 
-                        value={input} 
+                    <input type="text"
+                        className={classes.messageSender__input}
+                        placeholder="What's on your mind ?"
+                        value={input}
                         onChange={(e) => setInput(e.target.value)} />
-                 <Input 
-                       type="file" 
-                       className='messageSender__fileSelector' 
-                       onChange={handleChange} />
-                 <button 
-                       onClick={handleSubmit} 
-                       type='submit' >Hidden</button>
+                    <Input
+                        type="file"
+                        className={classes.messageSender__fileSelector}
+                        onChange={handleChange} />
+                    <button
+                        onClick={handleSubmit}
+                        type='submit' >Hidden</button>
 
                 </form>
             </div>
-            <div className="messageSender__bottom">
-                 <div className="messageSender__option">
-                     <VideocamIcon style={{ color: 'red' }} />
-                     <h3>Live Video</h3>
-                 </div>
-                 <div className= "messageSender__option">
-                     <PhotoLibraryIcon style={{ color: 'green '}} />
-                     <h3>Photo Video</h3>
-                 </div>
-                 <div className="messageSender__option">
-                     <InsertEmoticonIcon style={{ color: 'orange' }} />
-                     <h3>Felling/Activity</h3>
-                 </div>
+            <div className={classes.messageSender__bottom}>
+                <div className={classes.messageSender__option}>
+                    <VideocamIcon style={{ color: 'red' }} />
+                    <h3>Live Video</h3>
+                </div>
+                <div className={classes.messageSender__option}>
+                    <PhotoLibraryIcon style={{ color: 'green ' }} />
+                    <h3>Photo Video</h3>
+                </div>
+                <div className={classes.messageSender__option}>
+                    <InsertEmoticonIcon style={{ color: 'orange' }} />
+                    <h3>Felling/Activity</h3>
+                </div>
             </div>
-
-
-
-
-
         </div>
-    )
+    );
 }
 
-export default MessageSender
+export default MessageSender;
