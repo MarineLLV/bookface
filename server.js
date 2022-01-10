@@ -20,6 +20,10 @@ connectDB();
 // Le serveur et l'app run sur le même port (thanks to Next.js!)
 
 nextApp.prepare().then(() => {
+    // Create routes
+    app.use('/api/signup', require('./api/signup'))
+    app.use('/api/auth', require('./api/auth'))
+
     app.all('*', (req, res) => handle(req, res)); // pour faire fonctionner le dossier "pages"
 
     server.listen(PORT, error => {
