@@ -6,11 +6,11 @@ const UserSchema = new Schema({
 
     email: { type: String, required: true, unique: true },
 
-    password: { type: String, required: true, selct: false },
+    password: { type: String, required: true, select: false },
 
     username: { type: String, required: true, unique: true, trim: true },
 
-    profilPicUrl: { type: String },
+    profilPicUrl: { type: String }, // from Cloudinary
 
     newMessagePopup: { type: Boolean, default: true },
 
@@ -25,4 +25,4 @@ const UserSchema = new Schema({
 }, { timestamps: true }
 );
 
-module.exports = mongoose.model();
+module.exports = mongoose.model('User', UserSchema);
