@@ -5,16 +5,16 @@ function SignupForm() {
 
 
     return (
-        <section>
+        <section className={classes.section}>
             <div className={classes.color}></div>
             <div className={classes.color}></div>
             <div className={classes.color}></div>
             <div className={classes.box}>
-                <div className={classes.square} style="--i:0;"></div>
-                <div className={classes.square} style="--i:1;"></div>
-                <div className={classes.square} style="--i:2;"></div>
-                <div className={classes.square} style="--i:3;"></div>
-                <div className={classes.square} style="--i:4;"></div>
+                {/*  <div className={classes.square} style={{--i:0}}></div>
+                <div className={classes.square} style={{--i:1;}}></div>
+                <div className={classes.square} style={{--i:2;}}></div>
+                <div className={classes.square} style={{--i:3;}}></div>
+                <div className={classes.square} style="--i:4;"></div> */}
                 <div className={classes.container}>
                     <form className={classes.form} method="post">
                         <h2>Sign in</h2>
