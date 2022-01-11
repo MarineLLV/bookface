@@ -17,17 +17,17 @@ const PORT = process.env.PORT || 3000 // pour le futur déploiement
 app.use(express.json()); // body-parser
 connectDB();
 
-// Le serveur et l'app run sur le même port (thanks to Next.js!)
+// Le serveur et l'app run sur le même port
 
 nextApp.prepare().then(() => {
     // Create routes
     app.use('/api/signup', require('./api/signup'));
-    /* app.use('/api/auth', require('./api/auth')); */
+    app.use('/api/auth', require('./api/auth'));
 
     app.all('*', (req, res) => handle(req, res)); // pour faire fonctionner le dossier "pages"
 
     server.listen(PORT, error => {
         if (error) throw error;
-        console.log(`Express server running on ${PORT}`);
+        console.log('Express server running');
     });
 });

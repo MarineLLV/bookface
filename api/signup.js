@@ -86,7 +86,7 @@ router.post('/', async (req, res) => {
         user.password = await bcrypt.hash(password, 10)
         await user.save();
 
-        // create a profile Model
+        // create a new profile Model
         let profileFields = {}
         profileFields.user = user._id;
 
@@ -98,14 +98,24 @@ router.post('/', async (req, res) => {
         if (instagram) profileFields.social.instagram = instagram
         if (twitter) profileFields.social.twitter = twitter
 
+        await new ProfileModel(profileFields).save();
 
+        // create a new Follower Model
+        await new FollowerModel({ user: user._id, followers: [], following: [] }).save();
+
+        // send back the token to the frontend
+        const payload = { userId: user._id };
+        jwt.sign(payload, process.env.jwtSecret, { expiresIn: "2d" }, (error, token) => {
+            if (error) throw error;
+            res.status(200).json(token)
+        }
+        );
 
 
     } catch (error) {
         console.log(error);
         return res.status(500).send('Server error');
     }
-
 
 })
 
