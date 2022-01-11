@@ -10,7 +10,7 @@ const UserSchema = new Schema({
 
     username: { type: String, required: true, unique: true, trim: true },
 
-    profilPicUrl: { type: String }, // from Cloudinary
+    profilePicUrl: { type: String }, // from Cloudinary
 
     newMessagePopup: { type: Boolean, default: true },
 
