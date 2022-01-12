@@ -1,5 +1,5 @@
 import MessageSender from './messageSender';
-import StoryReel from './StoryReel';
+import StoryReel from './storyReel';
 import Post from './post';
 //import supreme from '../../public/images/supreme.jpg'
 
