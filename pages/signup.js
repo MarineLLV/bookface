@@ -1,5 +1,8 @@
 import SignupForm from '../components/signupForm';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
+import ImageDropDiv from '../components/Signup-Login/imageDrop';
+
+const regexUserName = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/;
 
 function Signup() {
     const [user, setUser] = useState({
@@ -24,9 +27,27 @@ function Signup() {
     const [usenameLoading, setUsernameLoading] = useState(false)
     const [usenameAvailable, setUsernameAvailable] = useState(false)
 
+    const [media, setMedia] = useState(null)
+    const [mediaPreview, setMediaPreview] = useState(null)
+    const [highlighted, setHighlighted] = useState(false)
+    const inputRef = useRef()
+
+    const handleSubmit = e => e.preventDefault();
 
     return (
-        <SignupForm />
+        <Fragment>
+            <ImageDropDiv
+                mediaPreview={mediaPreview}
+                setMediaPreview={setMediaPreview}
+                setMedia={setMedia}
+                inputRef={inputRef}
+                highlighted={highlighted}
+                setHighlighted={setHighlighted}
+                handleChange={handleChange}
+            />
+
+            <SignupForm onSubmit={handleSubmit} />
+        </Fragment>
     );
 }
 
