@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Fragment } from "react";
 import AddChildComment from "./AddChildComment";
 import Image from "next/image";
 import cat from "../../public/images/cat.jpg";
@@ -11,17 +12,17 @@ function Comments() {
       : setIsCommentDisplay("hidden");
 
   return (
-    <React.Fragment>
+    <Fragment>
       <div className="py-2 px-4">
         {/* COMMENT */}
         <div className="flex space-x-2">
-          
-          <Image 
-              src={cat} 
-              alt="Profile pic" 
-              width={500} 
-              height={500} 
-              />
+
+          <Image
+            src={cat}
+            alt="Profile pic"
+            width={500}
+            height={500}
+          />
 
           <div>
             <div className="bg-gray-100 dark:bg-dark-third p-2 rounded-2xl text-sm">
@@ -68,7 +69,7 @@ function Comments() {
         </div>
         {/* END COMMENT */}
       </div>
-    </React.Fragment>
+    </Fragment>
   );
 }
 

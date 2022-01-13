@@ -1,19 +1,20 @@
+import React from 'react';
 import { Fragment } from 'react';
 import Profile from '../components/Profile/Profile.js';
 import Header from '../components/Layout/header';
 
 
-function username () {
+
+function Username() {
     return (
         <div className="App">
-              <Header />
+            <Header />
             <Fragment>
-             <Profile />
+                <Profile />
 
-             </Fragment>
-             </div>
+            </Fragment>
+        </div>
     );
-   
 }
 
-export default username
+export default Username;

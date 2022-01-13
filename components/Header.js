@@ -1,7 +1,17 @@
+import Home from '@mui/icons-material/Home';
+import { Watch } from '@mui/icons-material';
+import { Groups } from '@mui/icons-material';
+import { PlusOne } from '@mui/icons-material';
+import { Feed } from '@mui/icons-material';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
+import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import MessageOutlinedIcon from '@mui/icons-material/MessageOutlined';
 import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
-import { FacebookLogo, SearchIcon, Plus, Messenger, DownArrow, Bell, Home, Watch, Groups, Feed } from '../../icons'
-
+/* import { FacebookLogo, SearchIcon, Plus, Messenger, DownArrow, Bell, Home, Watch, Groups, Feed } from '../../icons'
+ */
 
 function Header() {
 
@@ -14,7 +24,7 @@ function Header() {
             {/* // <!-- LEFT NAV --> */}
             <div className="flex items-center justify-between w-full md:w-max px-2 py-2">
                 <a href="#" className="mr-2 hidden md:inline-block">
-                    <FacebookLogo />
+                    <FacebookOutlinedIcon />
                 </a>
                 <a href="#" className="inline-block md:hidden">
                     <img src="./images/fb-logo-mb.png" alt="" className="w-32 h-auto" />
@@ -22,7 +32,7 @@ function Header() {
                 {/* Seacrh */}
                 <div className="flex items-center justify-between space-x-1">
                     <div className="relative bg-gray-100  px-2 py-2 w-10 h-10 sm:w-11 sm:h-11 lg:h-10 lg:w-10 xl:w-max xl:pl-3 xl:pr-8 rounded-full flex items-center justify-center cursor-pointer">
-                        <SearchIcon />
+                        <SearchOutlinedIcon />
                         <input type="text" placeholder="Search Facebook" className="outline-none bg-transparent hidden xl:inline-block mx-2" />
                     </div>
                     <div className="text-2xl grid place-items-center md:hidden bg-gray-200  rounded-full w-10 h-10 cursor-pointer hover:bg-gray-300">
@@ -77,26 +87,26 @@ function Header() {
                 </li>
                 <li>
                     <div className="text-xl hidden xl:grid place-items-center bg-gray-200 rounded-full mx-1 p-3 cursor-pointer hover:bg-gray-300 relative">
-                        <Plus />
+                        <PlusOne />
                     </div>
                 </li>
                 {/* Messenger */}
                 <li>
-                    <Link to="/messages" className="text-xl hidden xl:grid place-items-center bg-gray-200 rounded-full mx-1 p-3 cursor-pointer hover:bg-gray-300 relative">
-                        <Messenger />
+                    <Link href="#" className="text-xl hidden xl:grid place-items-center bg-gray-200 rounded-full mx-1 p-3 cursor-pointer hover:bg-gray-300 relative">
+                        <MessageOutlinedIcon />
                     </Link>
                 </li>
                 {/* Notifications */}
                 <li>
                     <div className="text-xl grid place-items-center bg-gray-200 rounded-full mx-1 p-3 cursor-pointer hover:bg-gray-300 relative">
-                        <Bell />
+                        <NotificationsNoneOutlinedIcon />
                         <span className="text-xs absolute top-0 right-0 bg-red-500 text-white font-semibold rounded-full px-1 text-center">2</span>
                     </div>
                 </li>
                 {/* Account menu */}
                 <li>
                     <div id="open-account-menu" onClick={show} className="text-xl grid place-items-center bg-gray-200 rounded-full mx-1 p-3 cursor-pointer hover:bg-gray-300">
-                        <DownArrow />
+                        <ArrowDownwardIcon />
                     </div>
                 </li>
             </ul>
@@ -106,7 +116,7 @@ function Header() {
                 <div className="p-2 border-b border-gray-300 w-80 dark:border-dark-third flex space-x-4">
                     <ul className="w-96">
                         <li className="p-2 cursor-pointer hover:bg-gray-100 rounded-lg transition-all">
-                            <Link to="/profile">
+                            <Link href="#">
                                 <div className="flex">
                                     <div>
                                         <img src="./images/profile_photo_cat.jpg" className="rounded-full w-16" />
@@ -122,8 +132,8 @@ function Header() {
                         <li className="p-2 cursor-pointer font-semibold hover:bg-gray-100 rounded-lg transition-all">Give Feedback</li>
                         <hr className="p-1 m-2" />
                         <li className="p-2 cursor-pointer font-semibold hover:bg-gray-100 rounded-lg transition-all">
-                            <Link to="/settings">
-                                Settings & privacy
+                            <Link href="#">
+                                Settings &amp; privacy
                             </Link>
                         </li>
                         <li className="p-2 cursor-pointer font-semibold hover:bg-gray-100 rounded-lg transition-all">Help & support</li>

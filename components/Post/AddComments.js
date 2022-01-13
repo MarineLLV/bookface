@@ -1,16 +1,17 @@
 import React from "react";
+import { Fragment } from "react";
 
 function AddComment() {
     return (
-        <React.Fragment>
+        <Fragment>
             <div className="py-2 px-4">
                 <div className="flex space-x-2">
                     <img src="./images/profile_photo_cat.jpg" alt="Profile picture" className="w-9 h-9 rounded-full" />
                     <div className="flex-1 flex bg-gray-100 dark:bg-dark-third rounded-full items-center justify-between px-3">
-                        <input 
-                            type="text" 
-                            placeholder="Write a comment..." 
-                            className="outline-none bg-transparent flex-1" 
+                        <input
+                            type="text"
+                            placeholder="Write a comment..."
+                            className="outline-none bg-transparent flex-1"
                             name="content"
                         />
                         <div className="flex space-x-0 items-center justify-center">
@@ -22,7 +23,7 @@ function AddComment() {
                     </div>
                 </div>
             </div>
-        </React.Fragment>
+        </Fragment>
     )
 }
 

@@ -1,4 +1,4 @@
-
+import React from 'react'
 import { Link } from 'next/Link'
 //import AddComments from '../Post/AddComments'
 //import Comments from '../Post/Comments'
@@ -8,7 +8,7 @@ import ProfileHeader from './ProfileHeader'
 import Image from 'next/image'
 import cat from '../../public/images/cat.jpg'
 
-function Profile () {
+function Profile() {
     return (
         <div className="h-screen">
             <div className="mt-14 shadow bg-white h-screen">
@@ -55,56 +55,56 @@ function Profile () {
                                             <div className="grid grid-cols-3 gap-1">
                                                 <div className="bg-white p-0.5">
 
-                                                    <Image 
-                                                    src= { cat }
-                                                    alt="Profile pic"
-                                                    width={500}
-                                                    height={500}
+                                                    <Image
+                                                        src={cat}
+                                                        alt="Profile pic"
+                                                        width={500}
+                                                        height={500}
                                                     />
 
-                                                    <Image 
-                                                    src= { cat }
-                                                    alt="Profile pic"
-                                                    width={500}
-                                                    height={500}
-                                                    />
-                                                    
-                                                    <Image 
-                                                    src= { cat }
-                                                    alt="Profile pic"
-                                                    width={500}
-                                                    height={500}
+                                                    <Image
+                                                        src={cat}
+                                                        alt="Profile pic"
+                                                        width={500}
+                                                        height={500}
                                                     />
 
-                                        
-                                               
-                                              
+                                                    <Image
+                                                        src={cat}
+                                                        alt="Profile pic"
+                                                        width={500}
+                                                        height={500}
+                                                    />
+
+
+
+
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    {/* // END FRIENDS */}
                                 </div>
-                                {/* // END FRIENDS */}
-                            </div>
-                            {/* END LEFT */}
+                                {/* END LEFT */}
 
-                            {/* // POST LIST */}
-                            <div className="w-2/5">
-                                {/* CREATE POST */}
-                                <CreatePost />
-                                {/* END CREATE POST */}
+                                {/* // POST LIST */}
+                                <div className="w-2/5">
+                                    {/* CREATE POST */}
+                                    <CreatePost />
+                                    {/* END CREATE POST */}
 
-                                {/* POST */}
-                                <Post />
-                                {/* END POST */}
+                                    {/* POST */}
+                                    <Post />
+                                    {/* END POST */}
+                                </div>
+                                {/* // END POST LIST */}
                             </div>
-                            {/* // END POST LIST */}
                         </div>
                     </div>
+                    {/* // END CONTENT */}
                 </div>
-                {/* // END CONTENT */}
             </div>
         </div>
-    </div>
     );
 }
 

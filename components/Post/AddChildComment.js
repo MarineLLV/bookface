@@ -1,19 +1,20 @@
 
 import React from 'react'
+import { Fragment } from 'react'
 import Image from 'next/image'
 import dog from '../../public/images/dog.jpg'
 
 function AddChildComment() {
     return (
-        <React.Fragment>
+        <Fragment>
             <div className="py-2 px-4">
                 <div className="flex space-x-2">
-                <Image 
-                    src={ dog } 
-                    alt="Profile pic" 
-                    width={500} 
-                    height={500} 
-                />
+                    <Image
+                        src={dog}
+                        alt="Profile pic"
+                        width={500}
+                        height={500}
+                    />
                     <div className="flex-1 flex bg-gray-100 dark:bg-dark-third rounded-full items-center justify-between px-3">
                         <input
                             type="text"
@@ -30,7 +31,7 @@ function AddChildComment() {
                     </div>
                 </div>
             </div>
-        </React.Fragment>
+        </Fragment>
     )
 }
 
