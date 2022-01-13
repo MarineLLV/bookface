@@ -2,7 +2,8 @@ import { Fragment } from 'react';
 import Header from '../components/Layout/header';
 import Sidebar from '../components/sidebar';
 import Feed from '../components/feed';
-import Widget from '../components/widget';
+import Widget from '../components/Widget';
+import CreatePost from '../components/Post/CreatePost'
 
 
 function HomePage() {
@@ -12,6 +13,7 @@ function HomePage() {
       <Fragment>
         <Sidebar />
         <Feed />
+        <CreatePost />
         <Widget />
       </Fragment>
     </div>
