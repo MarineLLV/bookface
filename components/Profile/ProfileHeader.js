@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image'
-import cat from '../../public/images/cat.jpg'
+
 
 function ProfileHeader() {
   return (
@@ -20,7 +20,7 @@ function ProfileHeader() {
               {/* profile photo */}
 
               <Image
-                src={cat}
+                src='/images/cat.jpg'
                 alt="Profile pic"
                 width={500}
                 height={500} />

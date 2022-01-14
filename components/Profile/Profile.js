@@ -6,7 +6,7 @@ import CreatePost from '../Post/Post'
 import Post from '../Post/Post'
 import ProfileHeader from './ProfileHeader'
 import Image from 'next/image'
-import cat from '../../public/images/cat.jpg'
+
 
 function Profile() {
     return (
@@ -47,7 +47,7 @@ function Profile() {
                                         {/* Header */}
                                         <div className="flex justify-between">
                                             <h1 className="font-bold text-xl">Friends</h1>
-                                            <Link to="/friends/myId" className="text-lg text-blue-700 hover:bg-blue-200">See All Friends</Link>
+                                            <Link href="/friends/myId" className="text-lg text-blue-700 hover:bg-blue-200">See All Friends</Link>
                                         </div>
                                         {/* List */}
                                         <div className="">
@@ -56,21 +56,21 @@ function Profile() {
                                                 <div className="bg-white p-0.5">
 
                                                     <Image
-                                                        src={cat}
+                                                        src='/public/images/cat.jpg'
                                                         alt="Profile pic"
                                                         width={500}
                                                         height={500}
                                                     />
 
                                                     <Image
-                                                        src={cat}
+                                                        src='/public/images/cat.jpg'
                                                         alt="Profile pic"
                                                         width={500}
                                                         height={500}
                                                     />
 
                                                     <Image
-                                                        src={cat}
+                                                        src='/public/images/cat.jpg'
                                                         alt="Profile pic"
                                                         width={500}
                                                         height={500}

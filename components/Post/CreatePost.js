@@ -5,7 +5,7 @@ import { Fragment } from 'react';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
-import cat from '../../public/images/cat.jpg';
+
 
 function CreatePost() {
     return (
@@ -16,7 +16,7 @@ function CreatePost() {
 
 
                     <Image
-                        src={cat}
+                        src='/images/cat.jpg'
                         alt="Profile pic"
                         width={500}
                         height={500}
