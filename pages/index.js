@@ -1,23 +1,20 @@
-import { Fragment } from 'react';
-import Header from '../components/Layout/header';
-import Sidebar from '../components/sidebar';
-import Feed from '../components/feed';
-import Widget from '../components/Widget';
-import CreatePost from '../components/Post/CreatePost'
-
+import { Fragment } from "react";
+import PrimarySearchAppBar, { Header } from "../components/Header";
+import CreatePost from "../components/Post/CreatePost";
+import { Grid } from "@mui/material";
 
 function HomePage() {
+
   return (
-    <div className="App">
-      <Header />
-      <Fragment>
-        <Sidebar />
-        <Feed />
+    <Fragment>
+      <PrimarySearchAppBar />
+      <Grid container justifyContent="center">
         <CreatePost />
-        <Widget />
-      </Fragment>
-    </div>
-  );
+      </Grid>
+      
+    </Fragment>
+
+  )
 }
 
 export default HomePage;

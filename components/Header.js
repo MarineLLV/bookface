@@ -1,151 +1,235 @@
-import Home from '@mui/icons-material/Home';
-import { Watch } from '@mui/icons-material';
-import { Groups } from '@mui/icons-material';
-import { PlusOne } from '@mui/icons-material';
-import { Feed } from '@mui/icons-material';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
-import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import MessageOutlinedIcon from '@mui/icons-material/MessageOutlined';
-import React, { useState, useEffect } from 'react'
-import { Link } from "react-router-dom";
-/* import { FacebookLogo, SearchIcon, Plus, Messenger, DownArrow, Bell, Home, Watch, Groups, Feed } from '../../icons'
- */
-
-function Header() {
-
-    const [isAccountMenuDisplay, setIsAccountMenuDisplay] = useState("hidden")
-    const show = () => isAccountMenuDisplay == "hidden" ? setIsAccountMenuDisplay("") : setIsAccountMenuDisplay("hidden")
-
-    return (
-        <nav className="bg-white h-max md:h-14 w-full shadow-sm flex flex-col md:flex-row items-center justify-center md:justify-between fixed top-0 z-50 border-b dark:border-dark-third">
-
-            {/* // <!-- LEFT NAV --> */}
-            <div className="flex items-center justify-between w-full md:w-max px-2 py-2">
-                <a href="#" className="mr-2 hidden md:inline-block">
-                    <FacebookOutlinedIcon />
-                </a>
-                <a href="#" className="inline-block md:hidden">
-                    <img src="./images/fb-logo-mb.png" alt="" className="w-32 h-auto" />
-                </a>
-                {/* Seacrh */}
-                <div className="flex items-center justify-between space-x-1">
-                    <div className="relative bg-gray-100  px-2 py-2 w-10 h-10 sm:w-11 sm:h-11 lg:h-10 lg:w-10 xl:w-max xl:pl-3 xl:pr-8 rounded-full flex items-center justify-center cursor-pointer">
-                        <SearchOutlinedIcon />
-                        <input type="text" placeholder="Search Facebook" className="outline-none bg-transparent hidden xl:inline-block mx-2" />
-                    </div>
-                    <div className="text-2xl grid place-items-center md:hidden bg-gray-200  rounded-full w-10 h-10 cursor-pointer hover:bg-gray-300">
-                        <i className='bx bxl-messenger'></i>
-                    </div>
-                    <div className="text-2xl grid place-items-center md:hidden bg-gray-200  rounded-full w-10 h-10 cursor-pointer hover:bg-gray-300">
-                        <i className='bx bxs-moon'></i>
-                    </div>
-                </div>
-            </div>
-            {/* // <!-- END LEFT NAV */}
-
-            {/* // <!-- MAIN NAV */}
-            <ul className="flex w-full lg:w-max items-center justify-center">
-                <li className="w-1/5 md:w-max text-center">
-                    <Link to="/" className="w-full text-3xl py-2 px-3 xl:px-12 cursor-pointer text-center inline-block text-blue-500 border-b-4 border-blue-500">
-                        <Home />
-                    </Link>
-                </li>
-                <li className="w-1/5 md:w-max text-center">
-                    <a href="#" className="w-full text-3xl py-2 px-3 xl:px-12 cursor-pointer text-center inline-block rounded text-gray-600 hover:bg-gray-100 dark:hover:bg-dark-third relative">
-                        <Watch />
-                        <span className="text-xs absolute top-0 right-1/4 bg-red-500 text-white font-semibold rounded-full px-1 text-center">9+</span>
-                    </a>
-                </li>
-                <li className="w-1/5 md:w-max text-center">
-                    <Link to="/creategroup" className="w-full text-3xl py-2 px-3 xl:px-12 cursor-pointer text-center inline-block rounded text-gray-600 hover:bg-gray-100 dark:hover:bg-dark-third relative">
-                        <Groups />
-                    </Link>
-                </li>
-                <li className="w-1/5 md:w-max text-center">
-                    <a href="#" className="w-full text-3xl py-2 px-3 xl:px-12 cursor-pointer text-center inline-block rounded text-gray-600 hover:bg-gray-100 dark:hover:bg-dark-third relative">
-                        <Feed />
-                    </a>
-                </li>
-                <li className="w-1/5 md:w-max text-center inline-block md:hidden">
-                    <a href="#" className="w-full text-3xl py-2 px-3 xl:px-12 cursor-pointer text-center inline-block rounded text-gray-600 hover:bg-gray-100 dark:hover:bg-dark-third relative">
-                        <i className='bx bx-menu'></i>
-                    </a>
-                </li>
-            </ul>
-            {/* // <!-- END MAIN NAV */}
-
-            {/* // <!-- RIGHT NAV */}
-            <ul className="hidden md:flex mx-4 items-center justify-center">
-                {/* Profile */}
-                <li className="h-full hidden xl:flex">
-                    <Link to="/profile" className="inline-flex items-center justify-center p-1 rounded-full hover:bg-gray-200 dark:hover:bg-dark-third mx-1">
-                        <img src="./images/profile_photo_cat.jpg" alt="Profile picture" className="rounded-full h-7 w-7" />
-                        <span className="mx-2 font-semibold">Can</span>
-                    </Link>
-                </li>
-                <li>
-                    <div className="text-xl hidden xl:grid place-items-center bg-gray-200 rounded-full mx-1 p-3 cursor-pointer hover:bg-gray-300 relative">
-                        <PlusOne />
-                    </div>
-                </li>
-                {/* Messenger */}
-                <li>
-                    <Link href="#" className="text-xl hidden xl:grid place-items-center bg-gray-200 rounded-full mx-1 p-3 cursor-pointer hover:bg-gray-300 relative">
-                        <MessageOutlinedIcon />
-                    </Link>
-                </li>
-                {/* Notifications */}
-                <li>
-                    <div className="text-xl grid place-items-center bg-gray-200 rounded-full mx-1 p-3 cursor-pointer hover:bg-gray-300 relative">
-                        <NotificationsNoneOutlinedIcon />
-                        <span className="text-xs absolute top-0 right-0 bg-red-500 text-white font-semibold rounded-full px-1 text-center">2</span>
-                    </div>
-                </li>
-                {/* Account menu */}
-                <li>
-                    <div id="open-account-menu" onClick={show} className="text-xl grid place-items-center bg-gray-200 rounded-full mx-1 p-3 cursor-pointer hover:bg-gray-300">
-                        <ArrowDownwardIcon />
-                    </div>
-                </li>
-            </ul>
-            {/* // <!-- END RIGHT NAV */}
-            {/* ACCOUNT MENU */}
-            <div className={`${isAccountMenuDisplay} right-6 md:absolute -mb-96 mt-12 p-4 lg:w-max shadow rounded-lg bg-white dark:bg-dark-second`}>
-                <div className="p-2 border-b border-gray-300 w-80 dark:border-dark-third flex space-x-4">
-                    <ul className="w-96">
-                        <li className="p-2 cursor-pointer hover:bg-gray-100 rounded-lg transition-all">
-                            <Link href="#">
-                                <div className="flex">
-                                    <div>
-                                        <img src="./images/profile_photo_cat.jpg" className="rounded-full w-16" />
-                                    </div>
-                                    <div className="flex flex-col ml-3">
-                                        <h1 className="font-semibold">Can Canbolat</h1>
-                                        <p className="mt-2">See your profile</p>
-                                    </div>
-                                </div>
-                            </Link>
-                        </li>
-                        <hr className="p-1 m-2" />
-                        <li className="p-2 cursor-pointer font-semibold hover:bg-gray-100 rounded-lg transition-all">Give Feedback</li>
-                        <hr className="p-1 m-2" />
-                        <li className="p-2 cursor-pointer font-semibold hover:bg-gray-100 rounded-lg transition-all">
-                            <Link href="#">
-                                Settings &amp; privacy
-                            </Link>
-                        </li>
-                        <li className="p-2 cursor-pointer font-semibold hover:bg-gray-100 rounded-lg transition-all">Help & support</li>
-                        <li className="p-2 cursor-pointer font-semibold hover:bg-gray-100 rounded-lg transition-all">Display & accessibility</li>
-                        <li className="p-2 cursor-pointer font-semibold hover:bg-gray-100 rounded-lg transition-all">Log Out</li>
-                    </ul>
-                </div>
-            </div>
-            {/* END ACCOUNT MENU */}
-        </nav>
-    )
+import { useState } from 'react';
 
 
+import { styled, alpha } from '@mui/material/styles';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import InputBase from '@mui/material/InputBase';
+import Badge from '@mui/material/Badge';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import MailIcon from '@mui/icons-material/Mail';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import MoreIcon from '@mui/icons-material/MoreVert';
+
+const Search = styled('div')(({ theme }) => ({
+  position: 'relative',
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  '&:hover': {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginRight: theme.spacing(2),
+  marginLeft: 0,
+  width: '100%',
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(3),
+    width: 'auto',
+  },
+}));
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: 'inherit',
+  '& .MuiInputBase-input': {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: '20ch',
+    },
+  },
+}));
+
+export default function PrimarySearchAppBar() {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+
+  const isMenuOpen = Boolean(anchorEl);
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const handleProfileMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMobileMenuClose = () => {
+    setMobileMoreAnchorEl(null);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+    handleMobileMenuClose();
+  };
+
+  const handleMobileMenuOpen = (event) => {
+    setMobileMoreAnchorEl(event.currentTarget);
+  };
+
+  const menuId = 'primary-search-account-menu';
+  const renderMenu = (
+    <Menu
+      anchorEl={anchorEl}
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      id={menuId}
+      keepMounted
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      open={isMenuOpen}
+      onClose={handleMenuClose}
+    >
+      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+    </Menu>
+  );
+
+  const mobileMenuId = 'primary-search-account-menu-mobile';
+  const renderMobileMenu = (
+    <Menu
+      anchorEl={mobileMoreAnchorEl}
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      id={mobileMenuId}
+      keepMounted
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      open={isMobileMenuOpen}
+      onClose={handleMobileMenuClose}
+    >
+      <MenuItem>
+        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+          <Badge badgeContent={4} color="error">
+            <MailIcon />
+          </Badge>
+        </IconButton>
+        <p>Messages</p>
+      </MenuItem>
+      <MenuItem>
+        <IconButton
+          size="large"
+          aria-label="show 17 new notifications"
+          color="inherit"
+        >
+          <Badge badgeContent={17} color="error">
+            <NotificationsIcon />
+          </Badge>
+        </IconButton>
+        <p>Notifications</p>
+      </MenuItem>
+      <MenuItem onClick={handleProfileMenuOpen}>
+        <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+        >
+          <AccountCircle />
+        </IconButton>
+        <p>Profile</p>
+      </MenuItem>
+    </Menu>
+  );
+
+  return (
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="open drawer"
+            sx={{ mr: 2 }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ display: { xs: 'none', sm: 'block' } }}
+          >
+            MUI
+          </Typography>
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </Search>
+          <Box sx={{ flexGrow: 1 }} />
+          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+              <Badge badgeContent={4} color="error">
+                <MailIcon />
+              </Badge>
+            </IconButton>
+            <IconButton
+              size="large"
+              aria-label="show 17 new notifications"
+              color="inherit"
+            >
+              <Badge badgeContent={17} color="error">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
+            <IconButton
+              size="large"
+              edge="end"
+              aria-label="account of current user"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              onClick={handleProfileMenuOpen}
+              color="inherit"
+            >
+              <AccountCircle />
+            </IconButton>
+          </Box>
+          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="large"
+              aria-label="show more"
+              aria-controls={mobileMenuId}
+              aria-haspopup="true"
+              onClick={handleMobileMenuOpen}
+              color="inherit"
+            >
+              <MoreIcon />
+            </IconButton>
+          </Box>
+        </Toolbar>
+      </AppBar>
+      {renderMobileMenu}
+      {renderMenu}
+    </Box>
+  );
 }
-export default Header
