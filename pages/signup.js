@@ -1,6 +1,8 @@
-import SignupForm from '../components/signupForm';
+import SignUpForm from '../components/Signup-Login/signupForm';
 import { Fragment, useState } from 'react';
 import ImageDropDiv from '../components/Signup-Login/imageDrop';
+import { Box, Container } from '@mui/material';
+import Copyright from '../components/copyright';
 
 const regexUserName = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/;
 
@@ -30,24 +32,26 @@ function Signup() {
     const [media, setMedia] = useState(null)
     const [mediaPreview, setMediaPreview] = useState(null)
     const [highlighted, setHighlighted] = useState(false)
-    const inputRef = useRef()
+    //const inputRef = useRef()
 
     const handleSubmit = e => e.preventDefault();
 
     return (
-        <Fragment>
+        <Container>
+            <SignUpForm onSubmit={handleSubmit} />
             <ImageDropDiv
                 mediaPreview={mediaPreview}
                 setMediaPreview={setMediaPreview}
                 setMedia={setMedia}
-                inputRef={inputRef}
+                //inputRef={inputRef}
                 highlighted={highlighted}
                 setHighlighted={setHighlighted}
-                handleChange={handleChange}
+            //handleChange={handleChange}
             />
-
-            <SignupForm onSubmit={handleSubmit} />
-        </Fragment>
+            <Box mt={5}>
+                <Copyright />
+            </Box>
+        </Container>
     );
 }
 
