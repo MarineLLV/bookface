@@ -1,4 +1,3 @@
-
 import { Button } from '@mui/material';
 import { CssBaseline } from '@mui/material';
 import { TextField } from '@mui/material';
@@ -32,13 +31,15 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function SignUpForm() {
+function LoginForm() {
     const classes = useStyles();
 
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
+
+                {/* <LockOutlined /> */}
                 <Image
                     src="/Bookface.svg"
                     alt="BookFace logo"
@@ -46,34 +47,12 @@ function SignUpForm() {
                     width={800}
                     height={800}
                 />
+
                 <Typography component="h1" variant="h5">
-                    Sign up
+                    Log in
                 </Typography>
                 <form className={classes.form} noValidate>
                     <Grid container spacing={2}>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                autoComplete="fname"
-                                name="firstName"
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="firstName"
-                                label="First Name"
-                                autoFocus
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="lastName"
-                                label="Last Name"
-                                name="lastName"
-                                autoComplete="lname"
-                            />
-                        </Grid>
                         <Grid item xs={12}>
                             <TextField
                                 variant="outlined"
@@ -83,6 +62,7 @@ function SignUpForm() {
                                 label="Email Address"
                                 name="email"
                                 autoComplete="email"
+                                autoFocus
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -109,8 +89,8 @@ function SignUpForm() {
                     </Button>
                     <Grid container justifyContent="flex-end">
                         <Grid item>
-                            <Link href="/login" variant="body2">
-                                Already have an account? Log in
+                            <Link href="/signup" variant="body2">
+                                No account? Sign up here
                             </Link>
                         </Grid>
                     </Grid>
@@ -120,4 +100,4 @@ function SignUpForm() {
     );
 }
 
-export default SignUpForm;
+export default LoginForm;

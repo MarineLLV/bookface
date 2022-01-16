@@ -1,8 +1,11 @@
 import SignUpForm from '../components/Signup-Login/signupForm';
-import { Fragment, useState } from 'react';
+
+import { useState } from 'react';
+import Navbar from '../components/Signup-Login/navbar';
 import ImageDropDiv from '../components/Signup-Login/imageDrop';
 import { Box, Container } from '@mui/material';
 import Copyright from '../components/copyright';
+
 
 const regexUserName = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/;
 
@@ -38,6 +41,7 @@ function Signup() {
 
     return (
         <Container>
+            <Navbar />
             <SignUpForm onSubmit={handleSubmit} />
             <ImageDropDiv
                 mediaPreview={mediaPreview}
