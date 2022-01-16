@@ -16,6 +16,33 @@ const bcrypt = require('bcryptjs');
 const isEmail = require('validator/lib/isEmail');
 const { sendStatusCode } = require('next/dist/server/api-utils');
 
+// import Middleware
+const authMiddleware = require('../middleware/authMiddleware');
+
+
+// GET request to send the user details
+router.get('/', authMiddleware, async (req, res) => {
+    const { userId } = req
+
+    try {
+        // Search for the user
+        const user = await UserModel.findById(userId)
+
+        // Send the users's follow stats
+        const userFollowStats = await FollowerModel.findOne({ user: userId })
+
+        // Send the data back
+        return res.status(200).json({ user, userFollowStats });
+
+
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send('Error server')
+    }
+})
+
+
 
 // 1. POST request 
 router.post('/', async (req, res) => {
