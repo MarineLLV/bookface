@@ -10,6 +10,7 @@ import { Container } from '@mui/material';
 import { Avatar } from '@mui/material';
 import { Typography } from '@mui/material';
 import Image from 'next/image';
+import Logo from '../logo';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -39,13 +40,14 @@ function SignUpForm() {
         <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
-                <Image
+                <Logo />
+                {/* <Image
                     src="/Bookface.svg"
                     alt="BookFace logo"
-                    /* layout='fill' */
+                    // layout='fill' 
                     width={800}
                     height={800}
-                />
+                /> */}
                 <Typography component="h1" variant="h5">
                     Sign up
                 </Typography>
