@@ -2,7 +2,6 @@ import { useState } from 'react';
 
 import FormControl from '@mui/material/FormControl';
 import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import makeStyles from '@mui/styles/makeStyles';
 import Container from '@mui/material/Container';
@@ -38,28 +37,53 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const initialValues = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    showPassword: false
+};
+
 function SignUpForm() {
     const classes = useStyles();
 
-    const [values, setValues] = useState({
-        password: '',
-        showPassword: false
-    });
+    //const { name, email, password } = user;
 
-    const handleChange = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value });
-    };
+    const [user, setUser] = useState(initialValues
+        /* firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        showPassword: false */
+    );
+
+    function handleChange(event) {
+        const { name, value } = event.target;
+        setUser({
+            ...user,
+            [name]: value,
+        });
+        /* setUser((prev) => {
+            return {
+                ...user,
+                [name]: value
+            };
+        }); */
+    }
 
     const handleClickShowPassword = () => {
-        setValues({
-            ...values,
-            showPassword: !values.showPassword,
+        setUser({
+            ...user,
+            showPassword: !user.showPassword,
         });
     };
 
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+
+    const handleSubmit = (event) => event.preventDefault();
 
 
     return (
@@ -70,10 +94,29 @@ function SignUpForm() {
                 <Typography component="h1" variant="h5">
                     Sign up
                 </Typography>
-                <form className={classes.form} noValidate>
+                <form className={classes.form} onSubmit={handleSubmit}>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
-                            <TextField
+                            {/* First name */}
+                            <FormControl
+                                variant="outlined"
+                                required
+                                fullWidth
+                            >
+                                <InputLabel>
+                                    First name
+                                </InputLabel>
+                                <OutlinedInput
+                                    /* id="outlined-adornment-password" */
+                                    name="firstName"
+                                    autoComplete="current-first-name"
+                                    type="text"
+                                    value={user.firstName}
+                                    onChange={handleChange}
+                                    label="First name"
+                                />
+                            </FormControl>
+                            {/* <TextField
                                 autoComplete="fname"
                                 name="firstName"
                                 variant="outlined"
@@ -82,10 +125,31 @@ function SignUpForm() {
                                 id="firstName"
                                 label="First Name"
                                 autoFocus
-                            />
+                                onChange={handleChange}
+                                value={user.firstName}
+                            /> */}
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <TextField
+                            {/* Last name */}
+                            <FormControl
+                                variant="outlined"
+                                required
+                                fullWidth
+                            >
+                                <InputLabel>
+                                    Last name
+                                </InputLabel>
+                                <OutlinedInput
+                                    /* id="outlined-adornment-password" */
+                                    name="lastName"
+                                    autoComplete="current-last-name"
+                                    type="text"
+                                    value={user.lastName}
+                                    onChange={handleChange}
+                                    label="Last name"
+                                />
+                            </FormControl>
+                            {/* <TextField
                                 variant="outlined"
                                 required
                                 fullWidth
@@ -93,20 +157,33 @@ function SignUpForm() {
                                 label="Last Name"
                                 name="lastName"
                                 autoComplete="lname"
-                            />
+                                onChange={handleChange}
+                                value={user.lastName}
+                            /> */}
                         </Grid>
                         <Grid item xs={12}>
-                            <TextField
+                            {/* Email */}
+                            <FormControl
                                 variant="outlined"
                                 required
                                 fullWidth
-                                id="email"
-                                label="Email Address"
-                                name="email"
-                                autoComplete="email"
-                            />
+                            >
+                                <InputLabel>
+                                    Email
+                                </InputLabel>
+                                <OutlinedInput
+                                    /* id="outlined-adornment-password" */
+                                    name="email"
+                                    autoComplete="current-email"
+                                    type="email"
+                                    value={user.email}
+                                    onChange={handleChange}
+                                    label="Email"
+                                />
+                            </FormControl>
                         </Grid>
                         <Grid item xs={12}>
+                            {/* Password */}
                             <FormControl
                                 variant="outlined"
                                 required
@@ -121,9 +198,9 @@ function SignUpForm() {
                                     id="outlined-adornment-password"
                                     name="password"
                                     autoComplete="current-password"
-                                    type={values.showPassword ? 'text' : 'password'}
-                                    value={values.password}
-                                    onChange={handleChange('password')}
+                                    type={user.showPassword ? 'text' : 'password'}
+                                    value={user.password}
+                                    onChange={handleChange}
                                     endAdornment={
                                         <InputAdornment position="end">
                                             <IconButton
@@ -132,23 +209,13 @@ function SignUpForm() {
                                                 onMouseDown={handleMouseDownPassword}
                                                 edge="end"
                                             >
-                                                {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                                                {user.showPassword ? <VisibilityOff /> : <Visibility />}
                                             </IconButton>
                                         </InputAdornment>
                                     }
                                     label="Password"
                                 />
                             </FormControl>
-                            {/* <FormControl
-                                variant="outlined"
-                                required
-                                fullWidth
-                                name="password"
-                                label="Password"
-                                type="password"
-                                id="password"
-                                autoComplete="current-password"
-                            /> */}
                         </Grid>
                     </Grid>
                     <Button
@@ -157,6 +224,7 @@ function SignUpForm() {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
+
                     >
                         Sign Up
                     </Button>
