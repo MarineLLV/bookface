@@ -1,17 +1,22 @@
+import { useState } from 'react';
 
-import { Button } from '@mui/material';
-import { CssBaseline } from '@mui/material';
-import { TextField } from '@mui/material';
-import Link from 'next/link';
-import { Grid } from '@mui/material';
-import { LockOutlined } from '@mui/icons-material';
-import { makeStyles } from '@mui/styles';
-import { Container } from '@mui/material';
-import { Avatar } from '@mui/material';
-import { Typography } from '@mui/material';
-import Image from 'next/image';
+import FormControl from '@mui/material/FormControl';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid';
+import makeStyles from '@mui/styles/makeStyles';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import InputLabel from '@mui/material/InputLabel';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import Button from '@mui/material/Button';
+
 import Logo from '../logo';
-
+import Link from 'next/link';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -36,18 +41,32 @@ const useStyles = makeStyles((theme) => ({
 function SignUpForm() {
     const classes = useStyles();
 
+    const [values, setValues] = useState({
+        password: '',
+        showPassword: false
+    });
+
+    const handleChange = (prop) => (event) => {
+        setValues({ ...values, [prop]: event.target.value });
+    };
+
+    const handleClickShowPassword = () => {
+        setValues({
+            ...values,
+            showPassword: !values.showPassword,
+        });
+    };
+
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+    };
+
+
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
                 <Logo />
-                {/* <Image
-                    src="/Bookface.svg"
-                    alt="BookFace logo"
-                    // layout='fill' 
-                    width={800}
-                    height={800}
-                /> */}
                 <Typography component="h1" variant="h5">
                     Sign up
                 </Typography>
@@ -88,7 +107,39 @@ function SignUpForm() {
                             />
                         </Grid>
                         <Grid item xs={12}>
-                            <TextField
+                            <FormControl
+                                variant="outlined"
+                                required
+                                fullWidth
+                            >
+                                <InputLabel
+                                    htmlFor="outlined-adornment-password"
+                                >
+                                    Password
+                                </InputLabel>
+                                <OutlinedInput
+                                    id="outlined-adornment-password"
+                                    name="password"
+                                    autoComplete="current-password"
+                                    type={values.showPassword ? 'text' : 'password'}
+                                    value={values.password}
+                                    onChange={handleChange('password')}
+                                    endAdornment={
+                                        <InputAdornment position="end">
+                                            <IconButton
+                                                aria-label="toggle password visibility"
+                                                onClick={handleClickShowPassword}
+                                                onMouseDown={handleMouseDownPassword}
+                                                edge="end"
+                                            >
+                                                {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                                            </IconButton>
+                                        </InputAdornment>
+                                    }
+                                    label="Password"
+                                />
+                            </FormControl>
+                            {/* <FormControl
                                 variant="outlined"
                                 required
                                 fullWidth
@@ -97,7 +148,7 @@ function SignUpForm() {
                                 type="password"
                                 id="password"
                                 autoComplete="current-password"
-                            />
+                            /> */}
                         </Grid>
                     </Grid>
                     <Button
