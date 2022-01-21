@@ -4,34 +4,17 @@ import Navbar from "../components/Signup-Login/navbar";
 import LoginForm from "../components/Signup-Login/loginForm";
 import Copyright from "../components/copyright";
 
+const initialValues = {
+    firstName: '',
+    lastName: '',
+    /* username: '', */
+    email: '',
+    password: '',
+    showPassword: false,
+    emailHelper: ''
+};
 
 function Login() {
-
-    const [user, setUser] = useState({
-
-        email: "",
-        password: "",
-
-    });
-
-    const { email, password } = user;
-
-    // useEffect()
-
-
-
-
-    // States
-    const [showPassword, setShowPassword] = useState(false)
-    const [errorMessage, setErrorMessage] = useState(null)
-    // + submitDisabled
-
-
-    // handleChange function
-
-
-
-    // handleSubmit
 
 
     return (

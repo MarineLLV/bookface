@@ -35,7 +35,6 @@ const useStyles = makeStyles(() => ({
 }
 ));
 
-import React from "react";
 
 function Icon() {
     const classes = useStyles();

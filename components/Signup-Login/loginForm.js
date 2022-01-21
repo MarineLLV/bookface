@@ -1,14 +1,14 @@
+import { useState } from 'react';
+
 import { Button } from '@mui/material';
 import { CssBaseline } from '@mui/material';
 import { TextField } from '@mui/material';
 import Link from 'next/link';
 import { Grid } from '@mui/material';
-import { LockOutlined } from '@mui/icons-material';
 import { makeStyles } from '@mui/styles';
 import { Container } from '@mui/material';
-import { Avatar } from '@mui/material';
 import { Typography } from '@mui/material';
-import Image from 'next/image';
+import Logo from '../logo';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.secondary.main,
     },
     form: {
-        width: '100%', // Fix IE 11 issue.
+        width: '100%',
         marginTop: theme.spacing(3),
     },
     submit: {
@@ -31,27 +31,38 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const initialValues = {
+    firstName: '',
+    lastName: '',
+    /* username: '', */
+    email: '',
+    password: '',
+    showPassword: false,
+    emailHelper: ''
+};
+
 function LoginForm() {
     const classes = useStyles();
+
+    const [user, setUser] = useState(initialValues);
+
+    const { email, password } = user;
 
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
-
-                {/* <LockOutlined /> */}
-                <Image
+                <Logo />
+                {/* <Image
                     src="/Bookface.svg"
                     alt="BookFace logo"
-                    /* layout='fill' */
                     width={800}
                     height={800}
-                />
-
+                /> */}
                 <Typography component="h1" variant="h5">
                     Log in
                 </Typography>
-                <form className={classes.form} noValidate>
+                <form className={classes.form}>
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
                             <TextField
@@ -59,9 +70,8 @@ function LoginForm() {
                                 required
                                 fullWidth
                                 id="email"
-                                label="Email Address"
+                                label="Email"
                                 name="email"
-                                autoComplete="email"
                                 autoFocus
                             />
                         </Grid>
@@ -74,7 +84,6 @@ function LoginForm() {
                                 label="Password"
                                 type="password"
                                 id="password"
-                                autoComplete="current-password"
                             />
                         </Grid>
                     </Grid>

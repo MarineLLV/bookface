@@ -17,6 +17,7 @@ import Button from '@mui/material/Button';
 import Logo from '../logo';
 import Link from 'next/link';
 
+
 const useStyles = makeStyles((theme) => ({
     paper: {
         marginTop: theme.spacing(8),
@@ -29,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.secondary.main,
     },
     form: {
-        width: '100%', // Fix IE 11 issue.
+        width: '100%',
         marginTop: theme.spacing(3),
     },
     submit: {
@@ -40,23 +41,32 @@ const useStyles = makeStyles((theme) => ({
 const initialValues = {
     firstName: '',
     lastName: '',
+    /* username: '', */
     email: '',
     password: '',
-    showPassword: false
+    showPassword: false,
+    emailHelper: ''
 };
+
+const regexUserName = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/;
+const regexEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
 function SignUpForm() {
     const classes = useStyles();
 
-    //const { name, email, password } = user;
+    const [user, setUser] = useState(initialValues);
+    const { name, email, password } = user;
 
-    const [user, setUser] = useState(initialValues
-        /* firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        showPassword: false */
-    );
+
+    const [username, setUsername] = useState('');
+    const [usernameAvailable, setUsernameAvailable] = useState(false);
+
+    //const [emailHelper, setEmailHelper] = useState('');
+
+
+    //const [errorMessage, setErrorMessage] = useState(null);
+
+    const [submitDisabled, setSubmitDisabled] = useState(true);
 
     function handleChange(event) {
         const { name, value } = event.target;
@@ -64,12 +74,6 @@ function SignUpForm() {
             ...user,
             [name]: value,
         });
-        /* setUser((prev) => {
-            return {
-                ...user,
-                [name]: value
-            };
-        }); */
     }
 
     const handleClickShowPassword = () => {
@@ -84,6 +88,34 @@ function SignUpForm() {
     };
 
     const handleSubmit = (event) => event.preventDefault();
+
+    /* const handleCheck = (event) => {
+        switch (event.target.id) {
+            case 'email':
+                const { name, value } = event.target;
+                setUser({
+                    ...user,
+                    [name]: value,
+                });
+
+                regexEmail.test(user.email)
+
+                if (!regexEmail) {
+                    setUser({
+                        ...user,
+                        emailHelper: 'Invalid email'
+                    })
+                } else {
+                    setUser({
+                        ...user,
+                        emailHelper: ''
+                    })
+                }
+                break;
+            default:
+                break;
+        }
+    } */
 
 
     return (
@@ -107,27 +139,16 @@ function SignUpForm() {
                                     First name
                                 </InputLabel>
                                 <OutlinedInput
-                                    /* id="outlined-adornment-password" */
+                                    id="firstName"
+                                    autoFocus
                                     name="firstName"
-                                    autoComplete="current-first-name"
+                                    /* autoComplete="current-first-name" */
                                     type="text"
                                     value={user.firstName}
                                     onChange={handleChange}
                                     label="First name"
                                 />
                             </FormControl>
-                            {/* <TextField
-                                autoComplete="fname"
-                                name="firstName"
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="firstName"
-                                label="First Name"
-                                autoFocus
-                                onChange={handleChange}
-                                value={user.firstName}
-                            /> */}
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             {/* Last name */}
@@ -140,26 +161,44 @@ function SignUpForm() {
                                     Last name
                                 </InputLabel>
                                 <OutlinedInput
-                                    /* id="outlined-adornment-password" */
                                     name="lastName"
-                                    autoComplete="current-last-name"
+                                    id="lastName"
+                                    /* autoComplete="current-last-name" */
                                     type="text"
                                     value={user.lastName}
                                     onChange={handleChange}
                                     label="Last name"
                                 />
                             </FormControl>
-                            {/* <TextField
+                        </Grid>
+                        <Grid item xs={12}>
+                            {/* Username */}
+                            <FormControl
                                 variant="outlined"
                                 required
                                 fullWidth
-                                id="lastName"
-                                label="Last Name"
-                                name="lastName"
-                                autoComplete="lname"
-                                onChange={handleChange}
-                                value={user.lastName}
-                            /> */}
+                            >
+                                <InputLabel>
+                                    Username
+                                </InputLabel>
+                                <OutlinedInput
+                                    /* error={!usernameAvailable} */
+                                    name="username"
+                                    id="userName"
+                                    /* autoComplete="current-username" */
+                                    type="text"
+                                    value={username}
+                                    onChange={event => {
+                                        setUsername(event.target.value)
+                                        if (regexUserName.test(event.target.value)) {
+                                            setUsernameAvailable(true);
+                                        } else {
+                                            setUsernameAvailable(false);
+                                        }
+                                    }}
+                                    label="Username"
+                                />
+                            </FormControl>
                         </Grid>
                         <Grid item xs={12}>
                             {/* Email */}
@@ -172,9 +211,10 @@ function SignUpForm() {
                                     Email
                                 </InputLabel>
                                 <OutlinedInput
-                                    /* id="outlined-adornment-password" */
                                     name="email"
-                                    autoComplete="current-email"
+                                    /*  error={user.emailHelper.length !== 0} */
+                                    id="email"
+                                    /* autoComplete="current-email" */
                                     type="email"
                                     value={user.email}
                                     onChange={handleChange}
@@ -195,9 +235,9 @@ function SignUpForm() {
                                     Password
                                 </InputLabel>
                                 <OutlinedInput
-                                    id="outlined-adornment-password"
+                                    id="password"
                                     name="password"
-                                    autoComplete="current-password"
+                                    /* autoComplete="current-password" */
                                     type={user.showPassword ? 'text' : 'password'}
                                     value={user.password}
                                     onChange={handleChange}
